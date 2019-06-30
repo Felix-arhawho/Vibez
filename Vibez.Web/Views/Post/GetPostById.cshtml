@@ -1,0 +1,259 @@
+﻿@model Vibez.Repositories.Dtos.ResponseDtos.PostResponseDto
+@{
+    ViewBag.Title = "Get Post By Id";
+}
+
+
+<div id="top" class="main-content-wrapper section-padding-100">
+    <div class="container">
+        <div class="world-latest-articles">
+            <div class="row">
+                <div class="col-12 col-lg-8">
+                    <div class="single-blog-content p-t-49">
+                        <!-- Post Meta -->
+                        <div class="post-meta">
+                            <p><a href="#" class="post-author">Vibez Team</a> on <a href="#" class="post-date">Sep 29, 2017 at 9:48 am</a></p>
+                        </div>
+
+                        @{ 
+                            var image = Model.Images.Where(i => i.postId == Model.Id).FirstOrDefault();
+                            var imageUrl = image.Url;
+                        }
+
+                        <div class="post-thumbnail">
+                            <img class="imgAdjustment" src="@Url.Content(imageUrl)" alt="">
+                        </div>
+
+                        <!-- Post Content -->
+                        <div class="post-content">
+                            <p class="postContentAdjustment">@Model.Content</p>
+
+                            <!-- Post Meta -->
+                            <div class="post-meta second-part">
+                                <p><a href="#" class="post-author">Vibez Team</a> on <a href="#" class="post-date">Sep 29, 2017 at 9:48 am</a></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    
+
+                </div>
+
+                <div class="col-12 col-lg-4">
+                    <div class="title">
+                        <h5>About Vibez</h5>
+                    </div>
+
+                    <!-- Single Blog Post -->
+                    <div class="wow fadeInUpBig" data-wow-delay="0.2s">
+                        <!-- Post Thumbnail -->
+                        <p>Vibez is a news blog that gives you information about all trending stuffs around the globe.</p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Login Modal -->
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="wrap-login100">
+                <form class="login100-form validate-form">
+                    <span class="login100-form-logo">
+                        <img src="Content/img/core-img/vibez_2.png" />
+                    </span>
+
+                    <span class="login100-form-title p-b-34 p-t-27">
+                        Log in
+                    </span>
+
+                    <div class="wrap-input100 validate-input" data-validate="Enter username">
+                        <input class="input100" type="text" name="username" placeholder="Username">
+                        <span class="focus-input100" data-placeholder="&#xf207;"></span>
+                    </div>
+
+                    <div class="wrap-input100 validate-input" data-validate="Enter password">
+                        <input class="input100" type="password" name="pass" placeholder="Password">
+                        <span class="focus-input100" data-placeholder="&#xf191;"></span>
+                    </div>
+
+                    <div class="contact100-form-checkbox">
+                        <input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
+                        <label class="label-checkbox100" for="ckb1">
+                            Remember me
+                        </label>
+                    </div>
+
+                    <div class="container-login100-form-btn">
+                        <button class="login100-form-btn">
+                            Login
+                        </button>
+                    </div>
+
+                    <div class="text-center p-t-45">
+                        <a class="txt1" href="#">
+                            Forgot Password?
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="signUpModal" tabindex="-1" role="dialog" aria-labelledby="signUpModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="wrap-login100">
+                <form class="login100-form validate-form">
+                    <span class="login100-form-logo">
+                        <img src="Content/img/core-img/vibez_2.png" />
+                    </span>
+
+                    <span class="login100-form-title p-b-34 p-t-27">
+                        Sign Up
+                    </span>
+
+                    <div class="wrap-input100 validate-input" data-validate="Enter username">
+                        <input class="input100" type="text" name="username" placeholder="Username">
+                        <span class="focus-input100" data-placeholder="&#xf207;"></span>
+                    </div>
+
+                    <div class="wrap-input100 validate-input" data-validate="Enter password">
+                        <input class="input100" type="password" name="pass" placeholder="Password">
+                        <span class="focus-input100" data-placeholder="&#xf191;"></span>
+                    </div>
+
+                    <div class="contact100-form-checkbox">
+                        <input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
+                        <label class="label-checkbox100" for="ckb1">
+                            Remember me
+                        </label>
+                    </div>
+
+                    <div class="container-login100-form-btn">
+                        <button class="login100-form-btn">
+                            Login
+                        </button>
+                    </div>
+
+                    <div class="text-center p-t-45">
+                        <a class="txt1" href="#">
+                            Forgot Password?
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="createPostModal" tabindex="-1" role="dialog" aria-labelledby="createPostModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="wrap-login100">
+                <form class="login100-form validate-form">
+                    <span class="login100-form-logo">
+                        <img src="Content/img/core-img/vibez_2.png" />
+                    </span>
+
+                    <span class="login100-form-title p-b-34 p-t-27">
+                        Create New Post
+                    </span>
+
+                    <div class="wrap-input100 validate-input" data-validate="Enter username">
+                        <input class="input100" type="text" name="username" placeholder="Title">
+                        @*<span class="focus-input100" data-placeholder="&#xf207;"></span>*@
+                    </div>
+
+                    <div class="wrap-input100 validate-input" data-validate="Content">
+                        <textarea class="input100" name="Content" placeholder="Content"></textarea>
+                        @*<span class="focus-input100" data-placeholder="&#xf191;"></span>*@
+                    </div>
+
+                    <div class="contact100-form-checkbox">
+                        <input class="" id="postImage" type="file" name="postImage">
+
+                    </div>
+
+                    <div class="container-login100-form-btn m-t-30">
+                        <button class="login100-form-btn">
+                            Create Post
+                        </button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="updatePostModal" tabindex="-1" role="dialog" aria-labelledby="updatePostModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="wrap-login100">
+                <form class="login100-form validate-form">
+                    <span class="login100-form-logo">
+                        <img src="Content/img/core-img/vibez_2.png" />
+                    </span>
+
+                    <span class="login100-form-title p-b-34 p-t-27">
+                        Update Post
+                    </span>
+
+                    <div class="wrap-input100 validate-input" data-validate="Enter username">
+                        <input class="input100" type="text" name="username" placeholder="Title">
+                        @*<span class="focus-input100" data-placeholder="&#xf207;"></span>*@
+                    </div>
+
+                    <div class="wrap-input100 validate-input" data-validate="Content">
+                        <textarea class="input100" name="Content" placeholder="Content"></textarea>
+                        @*<span class="focus-input100" data-placeholder="&#xf191;"></span>*@
+                    </div>
+
+                    <div class="contact100-form-checkbox">
+                        <input class="" id="postImage" type="file" name="postImage">
+
+                    </div>
+
+                    <div class="container-login100-form-btn m-t-30">
+                        <button class="login100-form-btn">
+                            Update Post
+                        </button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="deletePostModal" tabindex="-1" role="dialog" aria-labelledby="deletePostModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="wrap-login100">
+                <form class="login100-form validate-form">
+
+                    <span class="login100-form-title p-b-34 p-t-27">
+                        Do you really want to delete this post?
+                    </span>
+
+
+                    <div class="container-login100-form-btn m-t-30">
+                        <button class="login100-form-btn">
+                            Yes, delete
+                        </button>
+                        <button id="closeModal" class="login100-form-btn del100-form-btn m-l-30">
+                            Cancel
+                        </button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+

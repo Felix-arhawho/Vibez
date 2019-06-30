@@ -1,0 +1,151 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <!-- Title  -->
+    <title>Vibez | Entertainment, Politics & Life</title>
+
+    <!-- Favicon  -->
+    <link rel="icon" href="~/Content/img/core-img/favicon.ico">
+
+    <!-- Style CSS -->
+    <link rel="stylesheet" href="~/Content/style.css">
+    <link href="~/Content/custom.css" rel="stylesheet" />
+</head>
+<body>
+    <!-- ***** Header Area Start ***** -->
+    <header class="header-area sticky">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <nav class="navbar navbar-expand-lg">
+                        <!-- Logo -->
+                        <a class="navbar-brand" href="index.html"><img src="~/Content/img/core-img/vibez_2.png" alt="Logo"></a>
+                        <!-- Navbar Toggler -->
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#worldNav" aria-controls="worldNav" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                        <!-- Navbar -->
+                        <div class="collapse navbar-collapse" id="worldNav">
+                            <ul class="navbar-nav ml-auto">
+                                <li class="nav-item">
+                                    <a class="nav-link bg-info text-white rounded" href="javascript:void(0)" data-toggle="modal" data-target="#createPostModal"> <i class="fa fa-plus"></i> Create New Post</a>
+                                </li>
+                                <li class="nav-item active">
+                                    <a class="nav-link" href="/">Posts <span class="sr-only">(current)</span></a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">Contact</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link trend text-white rounded" href="#trending-posts">Trending</a>
+                                </li>
+                            </ul>
+                            <!-- Search Form  -->
+                            <div id="search-wrapper">
+                                <form action="#">
+                                    <input type="text" id="search" placeholder="Search something...">
+                                    <div id="close-icon"></div>
+                                    <input class="d-none" type="submit" value="">
+                                </form>
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- ***** Header Area End ***** -->
+    <div class="container-fluid body-content">
+        @RenderBody()
+        <footer class="footer-area">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12 col-md-4">
+                        <div class="footer-single-widget">
+                            <a href="#"><img src="~/Content/img/core-img/vibez_2.png" alt=""></a>
+                            <div class="copywrite-text mt-30">
+                                <p>
+                                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                                    Copyright &copy;
+                                    <script>document.write(new Date().getFullYear());</script> All rights reserved | Made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="#" target="_blank">vibez</a>
+                                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <div class="footer-single-widget">
+                            <ul class="footer-menu d-flex justify-content-between">
+                                <li><a href="#">Home</a></li>
+                                <li><a href="#">Gadgets</a></li>
+                                <li><a href="#">Lifestyle</a></li>
+                                <li><a href="#">Contact</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <div class="footer-single-widget">
+                            <h5>Subscribe</h5>
+                            <form action="#" method="post">
+                                <input type="email" name="email" id="email" placeholder="Enter your mail">
+                                <button type="button"><i class="fa fa-arrow-right"></i></button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+
+    <script src="~/Content/js/jquery/jquery-2.2.4.min.js"></script>
+    <!-- Popper js -->
+    <script src="~/Content/js/popper.min.js"></script>
+    <!-- Bootstrap js -->
+    <script src="~/Content/js/bootstrap.min.js"></script>
+    <!-- Plugins js -->
+    <script src="~/Content/js/plugins.js"></script>
+    <!-- Active js -->
+    <script src="~/Content/js/active.js"></script>
+
+    <!--===============================================================================================-->
+    <script src="~/Content/vendor/animsition/js/animsition.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/Content/vendor/bootstrap/js/popper.js"></script>
+    <script src="~/Content/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/Content/vendor/select2/select2.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/Content/vendor/daterangepicker/moment.min.js"></script>
+    <script src="~/Content/vendor/daterangepicker/daterangepicker.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/Content/vendor/countdowntime/countdowntime.js"></script>
+    <!--===============================================================================================-->
+    <!-- Modal js -->
+    <script src="~/Content/js/main.js"></script>
+    <script>
+        $('#closeModal').on('click', function () {
+            $('#deletePostModal').modal('toggle');
+        });
+
+        $('.like').on('click', function () {
+            $(this).toggleClass("text-primary pulse");
+            if ($('i.dislike').hasClass('text-danger')) {
+                $('i.dislike').removeClass('text-danger');
+            }
+        });
+
+        $(".dislike").on('click', function () {
+            $(this).toggleClass("text-danger pulse");
+            if ($('i.like').hasClass('text-primary')) {
+                $('i.like').removeClass('text-primary');
+            }
+        });
+
+    </script>
+    @RenderSection("scripts", required: false)
+</body>
+</html>

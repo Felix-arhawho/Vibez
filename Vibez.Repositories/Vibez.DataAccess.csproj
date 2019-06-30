@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{4AF1E5FD-A335-45AF-80F0-6AB176A880E0}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Vibez.Repositories</RootNamespace>
+    <AssemblyName>Vibez.Repositories</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Dtos\RequestDtos\CategoryRequestDto.cs" />
+    <Compile Include="Dtos\RequestDtos\CommentRequestDto.cs" />
+    <Compile Include="Dtos\RequestDtos\ImageRequestDto.cs" />
+    <Compile Include="Dtos\RequestDtos\PostRequestDto.cs" />
+    <Compile Include="Dtos\ResponseDtos\CategoryResponseDto.cs" />
+    <Compile Include="Dtos\ResponseDtos\CommentResponseDto.cs" />
+    <Compile Include="Dtos\ResponseDtos\ErrorResponseDto.cs" />
+    <Compile Include="Dtos\ResponseDtos\ImageResponseDto.cs" />
+    <Compile Include="Dtos\ResponseDtos\PostResponseDto.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\Concrete\CategoryRepository.cs" />
+    <Compile Include="Repositories\Concrete\CommentRepository.cs" />
+    <Compile Include="Repositories\Concrete\ImageRepository.cs" />
+    <Compile Include="Repositories\Concrete\PostRepository.cs" />
+    <Compile Include="Repositories\Concrete\Repository.cs" />
+    <Compile Include="Repositories\Interface\ICategoryRepository.cs" />
+    <Compile Include="Repositories\Interface\ICommentRepository.cs" />
+    <Compile Include="Repositories\Interface\IImageRepository.cs" />
+    <Compile Include="Repositories\Interface\IPostRepository.cs" />
+    <Compile Include="Repositories\Interface\IRepository.cs" />
+    <Compile Include="UnitOfWork\Concrete\Uow.cs" />
+    <Compile Include="UnitOfWork\Interface\IUow.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Vibez.Domain\Vibez.Domain.csproj">
+      <Project>{addb52a3-02b5-42f5-afc4-86322440a8bb}</Project>
+      <Name>Vibez.Domain</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

@@ -1,0 +1,398 @@
+﻿@model List<Vibez.Repositories.Dtos.ResponseDtos.PostResponseDto>
+@{
+    ViewBag.Title = "List Of Post";
+}
+
+<div id="top" class="main-content-wrapper section-padding-100">
+    <div class="container containerAdjustment">
+        <div class="world-latest-articles">
+            <h4 class="headingAdjustment">Latest News</h4>
+            <div class="row">
+
+                @foreach (var post in Model)
+                {
+                    var image = post.Images.Where(i => i.postId == post.Id).FirstOrDefault();
+                    var imageUrl = image.Url;
+
+                    <div class="col-12 col-lg-8">
+                        <a href="~/Post/GetPostById/@post.Id" class="wow fadeInUpBig d-inline-block mb-1" data-wow-delay="0.2s">
+                            <div class="single-blog-post post-style-4 d-flex align-items-center">
+                                <!-- Post Thumbnail -->
+                                <div class="post-thumbnail">
+                                    <img class="imagePostAdjustment" src="@Url.Content(imageUrl)" alt="">
+                                </div>
+                                <!-- Post Content -->
+                                <div class="post-content">
+
+                                    <p class="postContentAdjustment">@post.Content</p>
+
+                                    <p></p>
+                                    <!-- Post Meta -->
+                                    <div class="post-meta">
+                                        <p class="d-flex justify-content-between"><span><span href="#" class="post-author">Vibez Team</span> on <span href="#" class="post-date">Sep 29, 2017 at 9:48 am</span></span> <span class="text-warning">likes<span class="mx-1"></span>&middot; dislikes<span class="mx-1"></span>&middot; comments<span class="ml-1">3</span></span></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                }
+
+                @*<div class="col-12 col-lg-4">
+                <div class="title">
+                    <h5>About Vibez</h5>
+                </div>
+
+                <!-- Single Blog Post -->
+                <div class="wow fadeInUpBig" data-wow-delay="0.2s">
+                    <!-- Post Thumbnail -->
+                    <p>The mango is perfect in that it is always yellow and if it’s not, I don’t want to hear about it. The mango’s only flaw, and it’s a minor one, is the effort it sometimes takes to undress the mango, carve it up in a way that makes sense, and find its way to the mouth.</p>
+                </div>
+
+            </div>*@
+            </div>
+        </div>
+
+        <div id="trending-posts" class="row justify-content-center section-padding-100">
+            <!-- ============= Post Content Area Start ============= -->
+            <div class="col-12">
+                <div class="post-content-area mb-50">
+
+                    <!-- Catagory Area -->
+                    <div class="world-catagory-area mt-50">
+                        <ul class="nav nav-tabs" id="myTab2" role="tablist">
+                            <li class="title">What's Trending</li>
+                        </ul>
+
+                        <div class="tab-content" id="myTabContent2">
+
+                            <div class="tab-pane fade show active" id="world-tab-10" role="tabpanel" aria-labelledby="tab10">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="world-catagory-slider2 owl-carousel wow fadeInUpBig" data-wow-delay="0.4s">
+
+                                            @{
+                                                var firstFourPost = Model.Take(4);
+                                                var nextFourPost = Model.Skip(4).Take(4);
+                                            }
+
+                                            <!-- ========= Single Catagory Slide ========= -->
+                                            <div class="single-cata-slide">
+                                                <div class="row">
+
+                                                    @foreach (var post in firstFourPost)
+                                                    {
+                                                        var image = post.Images.Where(i => i.postId == post.Id).FirstOrDefault();
+                                                        var imageUrl = image.Url;
+
+                                                        <div class="col-12 col-md-6">
+                                                            <!-- Single Blog Post -->
+                                                            <div class="single-blog-post post-style-2 d-flex align-items-center mb-1">
+                                                                <!-- Post Thumbnail -->
+                                                                <div class="post-thumbnail">
+                                                                    <img src="@Url.Content(imageUrl)" alt="">
+                                                                </div>
+                                                                <!-- Post Content -->
+                                                                <div class="post-content">
+                                                                    <a href="#" class="headline">
+                                                                        <p class="postContentAdjustment">@post.Content</p>
+                                                                    </a>
+                                                                    <!-- Post Meta -->
+                                                                    <div class="post-meta">
+                                                                        <p><a href="#" class="post-author">Vibez Team</a> on <a href="#" class="post-date">Sep 29, 2017 at 9:48 am</a></p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    }
+
+
+                                                </div>
+                                            </div>
+                                            <!-- ========= Single Catagory Slide ========= -->
+                                            <div class="single-cata-slide">
+                                                <div class="row">
+
+                                                    @foreach (var post in nextFourPost)
+                                                    {
+
+                                                        var image = post.Images.Where(i => i.postId == post.Id).FirstOrDefault();
+                                                        var imageUrl = image.Url;
+
+                                                        <div class="col-12 col-md-6">
+                                                            <!-- Single Blog Post -->
+                                                            <div class="single-blog-post post-style-2 d-flex align-items-center mb-1">
+                                                                <!-- Post Thumbnail -->
+                                                                <div class="post-thumbnail">
+                                                                    <img src="@Url.Content(imageUrl)" alt="">
+                                                                </div>
+                                                                <!-- Post Content -->
+                                                                <div class="post-content">
+                                                                    <a href="#" class="headline">
+                                                                        <p class="postContentAdjustment">@post.Content</p>
+                                                                    </a>
+                                                                    <!-- Post Meta -->
+                                                                    <div class="post-meta">
+                                                                        <p><a href="#" class="post-author">Katy Liu</a> on <a href="#" class="post-date">Sep 29, 2017 at 9:48 am</a></p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    }
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- Login Modal -->
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="wrap-login100">
+                <form class="login100-form validate-form">
+                    <span class="login100-form-logo">
+                        <img src="~/Content/img/core-img/vibez_2.png" />
+                    </span>
+
+                    <span class="login100-form-title p-b-34 p-t-27">
+                        Log in
+                    </span>
+
+                    <div class="wrap-input100 validate-input" data-validate="Enter username">
+                        <input class="input100" type="text" name="username" placeholder="Username">
+                        <span class="focus-input100" data-placeholder="&#xf207;"></span>
+                    </div>
+
+                    <div class="wrap-input100 validate-input" data-validate="Enter password">
+                        <input class="input100" type="password" name="pass" placeholder="Password">
+                        <span class="focus-input100" data-placeholder="&#xf191;"></span>
+                    </div>
+
+                    <div class="contact100-form-checkbox">
+                        <input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
+                        <label class="label-checkbox100" for="ckb1">
+                            Remember me
+                        </label>
+                    </div>
+
+                    <div class="container-login100-form-btn">
+                        <button class="login100-form-btn">
+                            Login
+                        </button>
+                    </div>
+
+                    <div class="text-center p-t-45">
+                        <a class="txt1" href="#">
+                            Forgot Password?
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="signUpModal" tabindex="-1" role="dialog" aria-labelledby="signUpModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="wrap-login100">
+                <form class="login100-form validate-form">
+                    <span class="login100-form-logo">
+                        <img src="Content/img/core-img/vibez_2.png" />
+                    </span>
+
+                    <span class="login100-form-title p-b-34 p-t-27">
+                        Sign Up
+                    </span>
+
+                    <div class="wrap-input100 validate-input" data-validate="Enter username">
+                        <input class="input100" type="text" name="username" placeholder="Username">
+                        <span class="focus-input100" data-placeholder="&#xf207;"></span>
+                    </div>
+
+                    <div class="wrap-input100 validate-input" data-validate="Enter password">
+                        <input class="input100" type="password" name="pass" placeholder="Password">
+                        <span class="focus-input100" data-placeholder="&#xf191;"></span>
+                    </div>
+
+                    <div class="contact100-form-checkbox">
+                        <input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
+                        <label class="label-checkbox100" for="ckb1">
+                            Remember me
+                        </label>
+                    </div>
+
+                    <div class="container-login100-form-btn">
+                        <button class="login100-form-btn">
+                            Login
+                        </button>
+                    </div>
+
+                    <div class="text-center p-t-45">
+                        <a class="txt1" href="#">
+                            Forgot Password?
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="createPostModal" tabindex="-1" role="dialog" aria-labelledby="createPostModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="wrap-login100">
+                <form class="login100-form validate-form">
+                    <span class="login100-form-logo">
+                        <img src="~/Content/img/core-img/vibez_2.png" />
+                    </span>
+
+                    <span class="login100-form-title p-b-34 p-t-27">
+                        Create New Post
+                    </span>
+
+                    <div class="wrap-input100 validate-input" data-validate="Title is required">
+                        <input class="input100" id="Title" type="text" placeholder="Title">
+                    </div>
+
+                    <div class="wrap-input100 validate-input" data-validate="Content is required">
+                        <textarea class="input100 textAreaAdjustment" id="Content" placeholder="Content"></textarea>
+                    </div>
+
+                    <div class="contact100-form-checkbox">
+                        <input class="" id="imageFile" type="file" />
+                    </div>
+
+                    <div class="container-login100-form-btn m-t-30">
+                        <button class="login100-form-btn" id="createPostBtn">
+                            Create Post
+                        </button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="updatePostModal" tabindex="-1" role="dialog" aria-labelledby="updatePostModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="wrap-login100">
+                <form class="login100-form validate-form">
+                    <span class="login100-form-logo">
+                        <img src="Content/img/core-img/vibez_2.png" />
+                    </span>
+
+                    <span class="login100-form-title p-b-34 p-t-27">
+                        Update Post
+                    </span>
+
+                    <div class="wrap-input100 validate-input" data-validate="Enter username">
+                        <input class="input100" type="text" name="username" placeholder="Title">
+                        @*<span class="focus-input100" data-placeholder="&#xf207;"></span>*@
+                    </div>
+
+                    <div class="wrap-input100 validate-input" data-validate="Content">
+                        <textarea class="input100" name="Content" placeholder="Content"></textarea>
+                        @*<span class="focus-input100" data-placeholder="&#xf191;"></span>*@
+                    </div>
+
+                    <div class="contact100-form-checkbox">
+                        <input class="" id="postImage" type="file" name="postImage">
+
+                    </div>
+
+                    <div class="container-login100-form-btn m-t-30">
+                        <button class="login100-form-btn">
+                            Update Post
+                        </button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="deletePostModal" tabindex="-1" role="dialog" aria-labelledby="deletePostModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="wrap-login100">
+                <form class="login100-form validate-form">
+
+                    <span class="login100-form-title p-b-34 p-t-27">
+                        Do you really want to delete this post?
+                    </span>
+
+
+                    <div class="container-login100-form-btn m-t-30">
+                        <button class="login100-form-btn">
+                            Yes, delete
+                        </button>
+                        <button id="closeModal" class="login100-form-btn del100-form-btn m-l-30">
+                            Cancel
+                        </button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script>
+        $(document).ready(function () {
+
+            $("#createPostBtn").click(function () {
+                var postTitle = $("#Title").val();
+                var postContent = $("#Content").val();
+                var imgFiles = document.getElementById("imageFile");
+
+                var fd = new FormData();
+
+                for (var i = 0; i < imgFiles.files.length; i++) {
+                    fd.append("ImageFile", imgFiles.files[i]);
+                }
+
+                fd.append("Title", postTitle);
+                fd.append("Content", postContent);
+                //fd.append("ImageFile", imgFiles.files[0]);
+
+                $.ajax({
+                    type: "POST",
+                    url: "/Post/CreatePost",
+                    data: fd,
+                    contentType: false,
+                    processData: false,
+                    success: function (response) {
+                        console.log(response);
+                        $("#createPostModal").modal("hide");
+                        alert("Post created successfully");
+                        window.location.href = "/Post/ListOfPost";
+                    },
+                    failure: function (response) {
+                        console.log(response);
+                        alert("Error");
+                    }
+                })
+            })
+        })
+    </script>
+}
